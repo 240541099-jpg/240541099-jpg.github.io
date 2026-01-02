@@ -2,29 +2,88 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Projelerim</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projelerim | Evrenin Derinlikleri</title>
     <style>
-        body { font-family: sans-serif; text-align: center; padding: 50px; }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            /* James Webb Arka Planı */
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Carina_Nebula_by_James_Webb_Space_Telescope.jpg/2560px-Carina_Nebula_by_James_Webb_Space_Telescope.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Sayfa kaydırılsa da resim sabit kalır */
+            display: flex;
+            justify_content: center;
+            align-items: center;
+            color: white;
+        }
+
+        /* Buzlu Cam Efektli Kutu */
+        .glass-container {
+            background: rgba(0, 0, 0, 0.6); /* Yarı saydam siyah */
+            backdrop-filter: blur(10px); /* Arkadaki resmi bulanıklaştırır */
+            -webkit-backdrop-filter: blur(10px); /* Safari desteği */
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            width: 90%;
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        p {
+            font-size: 1.1em;
+            color: #ddd;
+            margin-bottom: 30px;
+        }
+
         .btn {
             display: inline-block;
-            padding: 15px 30px;
-            background-color: #007bff;
+            padding: 15px 35px;
+            background: linear-gradient(45deg, #ff8c00, #ff0080); /* Yıldız tozu renkleri */
             color: white;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 50px;
             font-size: 18px;
-            margin: 10px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 0, 128, 0.4);
         }
-        .btn:hover { background-color: #0056b3; }
+
+        .btn:hover {
+            transform: translateY(-3px); /* Üzerine gelince hafif yukarı kalkar */
+            box-shadow: 0 6px 20px rgba(255, 0, 128, 0.6);
+        }
+        
+        .footer {
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #aaa;
+        }
     </style>
 </head>
 <body>
-    <h1>Benim Kodlama Yolculuğum</h1>
-    <p>Öğrendiğim konuları burada projeler halinde saklıyorum.</p>
-    
-    <hr>
 
-    <a href="/hava-durumu" class="btn">🌤️ 3D Dizi Hava Durumu</a>
-    
-    </body>
+    <div class="glass-container">
+        <h1>Kodlama Evrenim</h1>
+        <p>JavaScript dizileri ve algoritmalarla oluşturduğum projelerimi burada topluyorum. Sonsuzluğa ve ötesine!</p>
+        
+        <a href="/hava-durumu" class="btn">🌤️ 3D Dizi Projesini İncele</a>
+        
+        <div class="footer">
+            Arkaplan: James Webb Teleskobu (Carina Nebula)
+        </div>
+    </div>
+
+</body>
 </html>
