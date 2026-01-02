@@ -59,17 +59,21 @@
     .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255, 0, 128, 0.4); }
 
     /* --- YENİ EKLENEN: Kod Bloğu Tasarımı --- */
+    /* --- Basit ve Temiz Kod Kutusu --- */
     .code-box {
-        background-color: #1e1e1e; /* VS Code Arka Plan Rengi */
-        color: #d4d4d4;
+        background-color: #1e1e1e; /* Koyu editör rengi */
+        color: #f0f0f0;            /* Açık gri yazı rengi */
         padding: 20px;
-        border-radius: 10px;
-        font-family: 'Consolas', 'Courier New', monospace;
-        text-align: left;
-        overflow-x: auto; /* Kod uzunsa yana kaydır */
-        border-left: 5px solid #ff0080; /* Sol tarafa şık bir çizgi */
-        margin-top: 15px;
+        border-radius: 8px;
+        font-family: 'Consolas', 'Monaco', 'Courier New', monospace; /* Kod yazı tipi */
         font-size: 0.9em;
+        overflow-x: auto;          /* Kod uzunsa yana kaydırma çubuğu çıkar */
+        border-left: 5px solid #ff0080; /* Sol şerit */
+        margin-top: 15px;
+        margin-bottom: 25px;
+        text-align: left;
+        white-space: pre;          /* Boşlukları ve girintileri olduğu gibi korur! */
+        box-shadow: inset 0 0 10px #000; /* Hafif iç gölge */
     }
     
     /* Kod içindeki özel renklendirmeler (Basit Syntax Highlight) */
@@ -80,31 +84,45 @@
 </head>
 <body>
 
-    <div class="glass-container" style="text-align: center;">
-        <h1>Kodlama Evrenim 🚀</h1>
-        <p>Merhaba, ben bir Yazılım Geliştiricisiyim. JavaScript ve Algoritmalar üzerine çalışmalarımı burada topluyorum.</p>
-        <a href="/hava-durumu" class="btn">🌤️ 3D Hava Durumu Projesi</a>
-    </div>
+  <div class="glass-container">
+        <h2>📂 Kod Arşivim</h2>
+        <p>Farklı dillerde yazdığım kod parçacıkları:</p>
 
-    <div class="glass-container">
-        <h2>📂 Örnek Kod Parçacıklarım</h2>
-        <p>Projelerimde kullandığım bazı ilginç algoritmalar:</p>
-
-        <h3>1. 3 Boyutlu Dizi Oluşturma Mantığı</h3>
-        <p>Hava durumu projemde kullandığım iç içe döngü yapısı:</p>
-        
+        <h3>🐍 Python Örneği</h3>
         <div class="code-box">
-<span class="comment">// 10 Şehir, 10 Gün, 3 Veri içeren dizi oluşturma</span><br>
-<span class="keyword">let</span> havaVerileri = [];<br><br>
-<span class="keyword">for</span> (<span class="keyword">let</span> i = 0; i < 10; i++) { <br>
-&nbsp;&nbsp;<span class="keyword">let</span> gunlukVeriler = [];<br>
-&nbsp;&nbsp;<span class="keyword">for</span> (<span class="keyword">let</span> j = 0; j < 10; j++) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">let</span> veri = [<span class="string">"Sıcaklık"</span>, <span class="string">"Nem"</span>, <span class="string">"Durum"</span>];<br>
-&nbsp;&nbsp;&nbsp;&nbsp;gunlukVeriler.push(veri);<br>
-&nbsp;&nbsp;}<br>
-&nbsp;&nbsp;havaVerileri.push(gunlukVeriler);<br>
-}
+<pre>
+def hava_durumu_hesapla(sehir):
+    sicaklik = 25
+    if sicaklik > 20:
+        print(f"{sehir} bugün sıcak!")
+    else:
+        print(f"{sehir} bugün serin.")
+
+# Fonksiyonu çağıralım
+hava_durumu_hesapla("İstanbul")
+</pre>
         </div>
+
+        <h3>⚙️ C++ Örneği</h3>
+        <div class="code-box">
+<pre>
+#include <iostream>
+using namespace std;
+
+int main() {
+    int sayilar[3][3] = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+    
+    cout << "Matris Oluşturuldu!";
+    return 0;
+}
+</pre>
+        </div>
+
+    </div>
 
         <br> <h3>2. Rastgele Sayı Üretme</h3>
         <p>Belirli bir aralıkta tam sayı üreten fonksiyon:</p>
