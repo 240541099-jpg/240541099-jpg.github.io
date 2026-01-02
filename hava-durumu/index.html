@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Hava Durumu Dizisi</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f0f2f5; padding: 20px; }
+        h1 { text-align: center; color: #333; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        
+        /* Şehir Kartları Tasarımı */
+        .city-section {
+            background: white;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .city-title {
+            color: #007bff;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        /* Tablo Tasarımı */
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background-color: #f8f9fa; color: #333; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        
+        .data-cell { font-size: 0.9em; color: #555; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>10x10x3 Hava Durumu Dizisi</h1>
+    <p style="text-align:center;">Bu tablo 3 Boyutlu bir JavaScript dizisinden (Array) üretilmiştir.</p>
+    
+    <div id="app"></div>
+</div>
+
+<script>
+    // --- ADIM 1: VERİ HAZIRLIĞI ---
+    
+    const sehirIsimleri = ["İstanbul", "Ankara", "İzmir", "Antalya", "Bursa", "Adana", "Konya", "Gaziantep", "Şanlıurfa", "Kocaeli"];
+    const havaDurumlari = ["Güneşli", "Bulutlu", "Yağmurlu", "Karlı", "Rüzgarlı"];
+
+    // 3 Boyutlu Dizimizi Tanımlıyoruz (Boş olarak)
+    // Yapı: havaVerileri[SEHIR_INDEX][GUN_INDEX][VERI_TIPI_INDEX]
+    let havaVerileri = [];
+
+    // --- ADIM 2: DİZİYİ DOLDURMA (10x10x3) ---
+    // Döngülerle rastgele veri üretiyoruz
+    
+    for (let i = 0; i < 10; i++) { // 1. Boyut: 10 Şehir
+        let gunlukVeriler = []; // Bu şehrin günlerini tutacak dizi
+        
+        for (let j = 0; j < 10; j++) { // 2. Boyut: 10 Gün
+            
+            // 3. Boyut: 3 Veri (Sıcaklık, Nem, Durum)
+            // [0] -> Sıcaklık (°C)
+            // [1] -> Nem (%)
+            // [2] -> Durum (Metin)
+            let rastgeleSicaklik = Math.floor(Math.random() * 30) + 5; 
+            let rastgeleNem = Math.floor(Math.random() * 50) + 30;
+            let rastgeleDurum = havaDurumlari[Math.floor(Math.random() * havaDurumlari.length)];
+
+            let tekGunlukVeri = [rastgeleSicaklik, rastgeleNem, rastgeleDurum];
+            
+            gunlukVeriler.push(tekGunlukVeri);
+        }
+        
+        havaVerileri.push(gunlukVeriler);
+    }
+
+    // Konsola yazdıralım ki F12 yapıp yapıyı inceleyebil
+    console.log("Oluşturulan 3D Dizi:", havaVerileri);
+
+
+    // --- ADIM 3: VERİYİ EKRANA BASMA ---
+    
+    const appDiv = document.getElementById('app');
+    let htmlContent = "";
+
+    // 1. Döngü: Şehirleri Geziyoruz
+    for (let i = 0; i < havaVerileri.length; i++) {
+        let sehirAdi = sehirIsimleri[i];
+        
+        htmlContent += `<div class="city-section">`;
+        htmlContent += `<h2 class="city-title">${sehirAdi} (10 Günlük Rapor)</h2>`;
+        htmlContent += `<table>`;
+        htmlContent += `<thead><tr><th>Gün</th><th>Sıcaklık (°C)</th><th>Nem (%)</th><th>Durum</th></tr></thead>`;
+        htmlContent += `<tbody>`;
+
+        // 2. Döngü: O şehrin günlerini geziyoruz
+        for (let j = 0; j < havaVerileri[i].length; j++) {
+            
+            // 3. Boyut Verilerine Erişim:
+            // havaVerileri[i][j][0] -> Sıcaklık
+            // havaVerileri[i][j][1] -> Nem
+            // havaVerileri[i][j][2] -> Durum
+            
+            let sicaklik = havaVerileri[i][j][0]; 
+            let nem = havaVerileri[i][j][1];
+            let durum = havaVerileri[i][j][2];
+
+            htmlContent += `<tr>
+                <td>${j + 1}. Gün</td>
+                <td style="font-weight:bold; color:${sicaklik > 25 ? 'red' : 'blue'}">${sicaklik}°C</td>
+                <td>%${nem}</td>
+                <td>${durum}</td>
+            </tr>`;
+        }
+
+        htmlContent += `</tbody></table></div>`;
+    }
+
+    appDiv.innerHTML = htmlContent;
+
+</script>
+
+</body>
+</html>
