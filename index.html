@@ -4,85 +4,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projelerim | Evrenin Derinlikleri</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            height: 100vh;
-            /* James Webb Arka Planı */
-            background-image: url('https://www.nasa.gov/wp-content/uploads/2025/12/54960149350-2d46fe0a36-o.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Sayfa kaydırılsa da resim sabit kalır */
-            display: flex;
-            justify_content: center;
-            align-items: center;
-            color: white;
-        }
-
-        /* Buzlu Cam Efektli Kutu */
-        .glass-container {
-            background: rgba(0, 0, 0, 0.6); /* Yarı saydam siyah */
-            backdrop-filter: blur(10px); /* Arkadaki resmi bulanıklaştırır */
-            -webkit-backdrop-filter: blur(10px); /* Safari desteği */
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            max-width: 600px;
-            width: 90%;
-        }
-
-        h1 {
-            margin-top: 0;
-            font-size: 2.5em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-        }
-
-        p {
-            font-size: 1.1em;
-            color: #ddd;
-            margin-bottom: 30px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 35px;
-            background: linear-gradient(45deg, #ff8c00, #ff0080); /* Yıldız tozu renkleri */
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 0, 128, 0.4);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px); /* Üzerine gelince hafif yukarı kalkar */
-            box-shadow: 0 6px 20px rgba(255, 0, 128, 0.6);
-        }
+ <style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* Sayfa uzadıkça kayabilmesi için min-height yaptık */
+        min-height: 100vh; 
         
-        .footer {
-            margin-top: 20px;
-            font-size: 0.8em;
-            color: #aaa;
-        }
-    </style>
+        /* Arka plan resmi (Senin yüklediğin veya çalışan link) */
+        background-image: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2000&auto=format&fit=crop');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        
+        /* İçeriği hizalama */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        color: white;
+    }
+
+    /* Buzlu Cam Kutusu (Genel) */
+    .glass-container {
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 40px;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        max-width: 800px; /* Genişliği biraz artırdık kodlar sığsın diye */
+        width: 90%;
+        margin-bottom: 30px; /* Kutular arası boşluk */
+    }
+
+    h1, h2 { text-shadow: 2px 2px 4px rgba(0,0,0,0.8); margin-top: 0; }
+    p { color: #ddd; line-height: 1.6; }
+
+    /* Buton Tasarımı */
+    .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background: linear-gradient(45deg, #ff8c00, #ff0080);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
+        margin-top: 10px;
+        transition: 0.3s;
+    }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255, 0, 128, 0.4); }
+
+    /* --- YENİ EKLENEN: Kod Bloğu Tasarımı --- */
+    .code-box {
+        background-color: #1e1e1e; /* VS Code Arka Plan Rengi */
+        color: #d4d4d4;
+        padding: 20px;
+        border-radius: 10px;
+        font-family: 'Consolas', 'Courier New', monospace;
+        text-align: left;
+        overflow-x: auto; /* Kod uzunsa yana kaydır */
+        border-left: 5px solid #ff0080; /* Sol tarafa şık bir çizgi */
+        margin-top: 15px;
+        font-size: 0.9em;
+    }
+    
+    /* Kod içindeki özel renklendirmeler (Basit Syntax Highlight) */
+    .keyword { color: #569cd6; font-weight: bold; } /* Mavi (var, function vb.) */
+    .string { color: #ce9178; } /* Turuncu (Tırnak içindekiler) */
+    .comment { color: #6a9955; font-style: italic; } /* Yeşil (Yorum satırları) */
+</style>
 </head>
 <body>
 
+    <div class="glass-container" style="text-align: center;">
+        <h1>Kodlama Evrenim 🚀</h1>
+        <p>Merhaba, ben bir Yazılım Geliştiricisiyim. JavaScript ve Algoritmalar üzerine çalışmalarımı burada topluyorum.</p>
+        <a href="/hava-durumu" class="btn">🌤️ 3D Hava Durumu Projesi</a>
+    </div>
+
     <div class="glass-container">
-        <h1>Kodlama Evrenim</h1>
-        <p>JavaScript dizileri ve algoritmalarla oluşturduğum projelerimi burada topluyorum. Sonsuzluğa ve ötesine!</p>
+        <h2>📂 Örnek Kod Parçacıklarım</h2>
+        <p>Projelerimde kullandığım bazı ilginç algoritmalar:</p>
+
+        <h3>1. 3 Boyutlu Dizi Oluşturma Mantığı</h3>
+        <p>Hava durumu projemde kullandığım iç içe döngü yapısı:</p>
         
-        <a href="/hava-durumu" class="btn">🌤️ 3D Dizi Projesini İncele</a>
-        
-        <div class="footer">
-            Arkaplan: James Webb Teleskobu (Carina Nebula)
+        <div class="code-box">
+<span class="comment">// 10 Şehir, 10 Gün, 3 Veri içeren dizi oluşturma</span><br>
+<span class="keyword">let</span> havaVerileri = [];<br><br>
+<span class="keyword">for</span> (<span class="keyword">let</span> i = 0; i < 10; i++) { <br>
+&nbsp;&nbsp;<span class="keyword">let</span> gunlukVeriler = [];<br>
+&nbsp;&nbsp;<span class="keyword">for</span> (<span class="keyword">let</span> j = 0; j < 10; j++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">let</span> veri = [<span class="string">"Sıcaklık"</span>, <span class="string">"Nem"</span>, <span class="string">"Durum"</span>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gunlukVeriler.push(veri);<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;havaVerileri.push(gunlukVeriler);<br>
+}
         </div>
+
+        <br> <h3>2. Rastgele Sayı Üretme</h3>
+        <p>Belirli bir aralıkta tam sayı üreten fonksiyon:</p>
+
+        <div class="code-box">
+<span class="keyword">function</span> rastgeleSayi(<span class="keyword">min</span>, <span class="keyword">max</span>) {<br>
+&nbsp;&nbsp;<span class="keyword">return</span> Math.floor(Math.random() * (max - min + 1)) + min;<br>
+}<br><br>
+<span class="comment">// Kullanımı:</span><br>
+console.log(rastgeleSayi(20, 40)); <span class="comment">// Örn: 27</span>
+        </div>
+
+    </div>
+
+    <div style="font-size: 0.8em; opacity: 0.7;">
+        Arkaplan: James Webb Teleskobu (Carina Nebula)
     </div>
 
 </body>
